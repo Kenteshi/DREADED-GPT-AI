@@ -13,6 +13,7 @@ const acrcloud = require("acrcloud");
 const ytdl = require("ytdl-core");
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 const { fetchUrl, isUrl, processTime } = require("./lib/dreadfunc");
+const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/dreadupload');
 const { Configuration, OpenAIApi } = require("openai");
 let setting = process.env.AI; 
 const { smsg, formatp, tanggal, formatDate, getTime,  sleep, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/dreadfunc');
@@ -340,6 +341,8 @@ Below is my command list.
 ┴│▸
 ▮➣Sticker
 ▮➣Toimg
+▮➣Upload
+▮➣Smeme
 ▮➣Song
 ▮➣Play
 ▮➣Whatsong
@@ -377,6 +380,7 @@ Below is my command list.
 ▮➣Delete
 ▮➣Remove
 ▮➣Foreigners
+▮➣Faker
 ▮➣Close
 ▮➣Open
 ▮➣Disp-off
@@ -428,6 +432,11 @@ client.sendMessage(m.chat, {
           // Group Commands
 break;
 
+
+
+
+
+
 case "compile-py":
 
 if (!text && !m.quoted) throw 'Quote/tag a python code to compile.';
@@ -469,7 +478,70 @@ reply(resultt1.stderr);
 
 
 
+break;
 
+  case 'quotely': {
+if (!m.quoted.text) throw 'Tag a text';
+let xf = m.quoted.text;
+
+                const {
+                    quote
+                } = require('./lib/dreadquotely.js')
+                
+                let pppuser = await client.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/75272825615a4dcb69526.png')
+                
+const rel = await quote(xf, pushname, pppuser)
+                
+                client.sendImageAsSticker(m.chat, rel.result, m, {
+                    packname: pushname,
+                    author: `DreadedBot`
+                })
+
+            }
+
+break;
+            case 'upload': {
+                
+                let fta2 = await client.downloadAndSaveMediaMessage(qmsg)
+                if (/image/.test(mime)) {
+                    let fta = await TelegraPh(fta2)
+                    reply(util.format(fta))
+                } else if (!/image/.test(mime)) {
+                    let fta = await UploadFileUgu(fta2)
+                    reply(util.format(fta))
+                }
+                await fs.unlinkSync(fta2)
+
+            }
+            break;
+case 'attp':
+                if (!q) return reply('I need text;')
+              
+                client.sendMessage(m.chat, {
+                    sticker: {
+                        url: `https://api.lolhuman.xyz/api/attp?apikey=cde5404984da80591a2692b6&text=${q}`
+                    }
+                }, {
+                    quoted: m
+                })
+                break;
+            case 'smeme': {
+                let responnd = `Quote an image or sticker with the 2 texts separated with |`
+                if (!/image/.test(mime)) return reply(responnd)
+                if (!text) return reply(responnd)
+           
+                atas = text.split('|')[0] ? text.split('|')[0] : '-'
+                bawah = text.split('|')[1] ? text.split('|')[1] : '-'
+                let dwnld = await client.downloadAndSaveMediaMessage(qmsg)
+                let fatGans = await TelegraPh(dwnld)
+                let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(bawah)}/${encodeURIComponent(atas)}.png?background=${fatGans}`
+                let pop = await client.sendImageAsSticker(m.chat, smeme, m, {
+                    packname: packname,
+
+                })
+                fs.unlinkSync(pop)
+            }
+            
 break;
 case "compile-c":
 
@@ -524,6 +596,99 @@ const _0x409dbc=_0x1a95;(function(_0x13296f,_0x1d8f2b){const _0x935a90=_0x1a95,_
 break;
 case "foreigners":
 function _0x1cda(_0x45ae79,_0x124c01){const _0x28147d=_0x2814();return _0x1cda=function(_0x1cda99,_0x51ef0d){_0x1cda99=_0x1cda99-0x13e;let _0x5e3083=_0x28147d[_0x1cda99];return _0x5e3083;},_0x1cda(_0x45ae79,_0x124c01);}function _0x2814(){const _0x5b0c3c=['admin','4nItKZA','length','foreigners\x20-x','\x20foreigners\x20removed!','map','254','2361927DyWIuk','chat','642YZYPTP','groupParticipantsUpdate','12nlEEnU','14029598UUeLFh','9dpnbjI','Dreaded\x20has\x20detected\x20','remove','user','65LXoVsy','767235UqsGSc','\x20foreigners.\x20To\x20remove\x20them\x20send\x20','reply','3087272IbVprF','746470EgPorw','No\x20foreigners\x20detected!','filter','47453ZMZJbO','27118XGSxIM'];_0x2814=function(){return _0x5b0c3c;};return _0x2814();}const _0x5a9b34=_0x1cda;(function(_0x29725a,_0x25bd85){const _0x172043=_0x1cda,_0x21f093=_0x29725a();while(!![]){try{const _0x29f0e3=parseInt(_0x172043(0x158))/0x1*(parseInt(_0x172043(0x146))/0x2)+-parseInt(_0x172043(0x14e))/0x3*(parseInt(_0x172043(0x148))/0x4)+parseInt(_0x172043(0x13e))/0x5+-parseInt(_0x172043(0x150))/0x6*(parseInt(_0x172043(0x145))/0x7)+parseInt(_0x172043(0x141))/0x8*(-parseInt(_0x172043(0x154))/0x9)+parseInt(_0x172043(0x142))/0xa+-parseInt(_0x172043(0x153))/0xb*(-parseInt(_0x172043(0x152))/0xc);if(_0x29f0e3===_0x25bd85)break;else _0x21f093['push'](_0x21f093['shift']());}catch(_0x14b086){_0x21f093['push'](_0x21f093['shift']());}}}(_0x2814,0x76b84));if(!m['isGroup'])throw group;if(!isBotAdmin)throw botAdmin;if(!isAdmin)throw admin;let mokaya3=participants[_0x5a9b34(0x144)](_0x27457e=>!_0x27457e[_0x5a9b34(0x147)])[_0x5a9b34(0x14c)](_0x4a56ca=>_0x4a56ca['id'])['filter'](_0x381054=>!_0x381054['startsWith'](_0x5a9b34(0x14d))&&_0x381054!=client['decodeJid'](client[_0x5a9b34(0x157)]['id']));if(!args||!args[0x0]){if(mokaya3[_0x5a9b34(0x149)]==0x0)return reply(_0x5a9b34(0x143));m['reply'](_0x5a9b34(0x155)+mokaya3[_0x5a9b34(0x149)]+_0x5a9b34(0x13f)+prefix+_0x5a9b34(0x14a));}else args[0x0]=='-x'&&await client[_0x5a9b34(0x151)](m[_0x5a9b34(0x14f)],mokaya3,_0x5a9b34(0x156));m[_0x5a9b34(0x140)](mokaya3['length']+_0x5a9b34(0x14b));
+break;
+
+case "faker":
+const _0x4fc505 = _0x5ac5;
+(function (_0x112631, _0x20e80a) {
+    const _0x1a7d55 = _0x5ac5, _0x4ff786 = _0x112631();
+    while (!![]) {
+        try {
+            const _0xb97d76 = -parseInt(_0x1a7d55(0x20a)) / (-0x166d + 0x193f + -0x2d1) * (parseInt(_0x1a7d55(0x218)) / (-0x255b * -0x1 + -0x24e4 * -0x1 + -0x4a3d)) + parseInt(_0x1a7d55(0x206)) / (0xaca + 0x2 * 0x8bd + -0x1c41) * (parseInt(_0x1a7d55(0x1f7)) / (-0x26f5 + 0x2b2 + 0x2447)) + parseInt(_0x1a7d55(0x215)) / (-0x1 * 0x1b63 + 0x4 * -0x283 + 0x31f * 0xc) * (parseInt(_0x1a7d55(0x1f0)) / (-0x11 * -0x6f + -0x73 * -0x10 + -0xe89)) + -parseInt(_0x1a7d55(0x213)) / (0x132 + 0x1324 + -0x144f * 0x1) * (parseInt(_0x1a7d55(0x200)) / (-0x17 * -0x1f + 0x24ac * -0x1 + 0x21eb)) + parseInt(_0x1a7d55(0x203)) / (0x1903 + 0x1 * -0x799 + -0x1161) * (parseInt(_0x1a7d55(0x210)) / (-0x1fb + -0xf1e + 0x1123)) + parseInt(_0x1a7d55(0x1f3)) / (-0x251c + 0x7 * 0xf0 + 0x1e97) * (parseInt(_0x1a7d55(0x1f6)) / (-0x1 * 0x214a + 0x23f1 + 0x17 * -0x1d)) + -parseInt(_0x1a7d55(0x214)) / (-0x1995 + 0x11 * 0xe5 + 0x1 * 0xa6d) * (-parseInt(_0x1a7d55(0x20d)) / (-0x2375 * 0x1 + -0x5f8 + 0x297b));
+            if (_0xb97d76 === _0x20e80a)
+                break;
+            else
+                _0x4ff786['push'](_0x4ff786['shift']());
+        } catch (_0x2d61ef) {
+            _0x4ff786['push'](_0x4ff786['shift']());
+        }
+    }
+}(_0x40c6, -0x4c0f0 + 0x1 * -0x4324f + 0x1 * 0xb744f));
+if (!m[_0x4fc505(0x211)])
+    throw group;
+function _0x40c6() {
+    const _0x1236ea = [
+        'filter',
+        '5744nthuAp',
+        'length',
+        'admin',
+        '13959HaIvRF',
+        '\x20To\x20remove',
+        'groupParti',
+        '23334abgLtk',
+        'remove',
+        'accounts.\x20',
+        'chat',
+        '885JJdZhz',
+        'sing\x20+1\x20fa',
+        'map',
+        '350LRJOTH',
+        'reply',
+        '\x20+1\x20fake\x20a',
+        '430IVbQyu',
+        'isGroup',
+        'etected!',
+        '1148VMIrqp',
+        '27989tCQoID',
+        '168765oAXpMe',
+        'ate',
+        '𝐷readed\x20ha',
+        '422RQjzbp',
+        '\x20removed!',
+        'No\x20virtual',
+        'ccessfully',
+        'ke\x20virtual',
+        '6LqcMll',
+        'ccounts\x20su',
+        '\x20WhatsApp\x20',
+        '51359DqmsYd',
+        's\x20detected',
+        '\x20them\x20send',
+        '528XydFpU',
+        '56vtYcDC',
+        'startsWith',
+        'decodeJid',
+        'cipantsUpd',
+        '\x20members\x20u',
+        '\x20faker\x20-x',
+        '\x20numbers\x20d',
+        'user'
+    ];
+    _0x40c6 = function () {
+        return _0x1236ea;
+    };
+    return _0x40c6();
+}
+if (!isBotAdmin)
+    throw botAdmin;
+if (!isAdmin)
+    throw admin;
+let fake = participants[_0x4fc505(0x1ff)](_0x272cc6 => !_0x272cc6[_0x4fc505(0x202)])[_0x4fc505(0x20c)](_0x5d2123 => _0x5d2123['id'])[_0x4fc505(0x1ff)](_0x410b73 => _0x410b73[_0x4fc505(0x1f8)]('1') && _0x410b73 != client[_0x4fc505(0x1f9)](client[_0x4fc505(0x1fe)]['id']));
+function _0x5ac5(_0x216e16, _0x5d320c) {
+    const _0x5ef00b = _0x40c6();
+    return _0x5ac5 = function (_0x13f905, _0x42237c) {
+        _0x13f905 = _0x13f905 - (0x1a81 * -0x1 + -0xede + 0x2b4b);
+        let _0x250d4b = _0x5ef00b[_0x13f905];
+        return _0x250d4b;
+    }, _0x5ac5(_0x216e16, _0x5d320c);
+}
+if (!args || !args[0x2139 + 0x11d3 + -0x330c]) {
+    if (fake[_0x4fc505(0x201)] == -0x3fb + 0xe * -0x265 + -0x1 * -0x2581)
+        return reply(_0x4fc505(0x1ed) + _0x4fc505(0x1fd) + _0x4fc505(0x212));
+    m[_0x4fc505(0x20e)](_0x4fc505(0x217) + _0x4fc505(0x1f4) + '\x20' + fake[_0x4fc505(0x201)] + (_0x4fc505(0x1fb) + _0x4fc505(0x20b) + _0x4fc505(0x1ef) + _0x4fc505(0x1f2) + _0x4fc505(0x208) + _0x4fc505(0x204) + _0x4fc505(0x1f5) + _0x4fc505(0x1fc)));
+} else
+    args[0x919 * 0x3 + 0x4f * 0x3f + -0xc * 0x3e5] == '-x' && (await client[_0x4fc505(0x205) + _0x4fc505(0x1fa) + _0x4fc505(0x216)](m[_0x4fc505(0x209)], [fake], _0x4fc505(0x207)), await m[_0x4fc505(0x20e)](fake[_0x4fc505(0x201)] + (_0x4fc505(0x20f) + _0x4fc505(0x1f1) + _0x4fc505(0x1ee) + _0x4fc505(0x1ec))));
+
 break;
 
 case "mail":
@@ -1025,6 +1190,33 @@ case "credits":
   
               client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/c75efecf7f0aef851fc02.jpg' }, caption: `𝑪𝑹𝑬𝑫𝑰𝑻𝑺\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n𝐷𝑟𝑒𝑎𝑑𝑒𝑑 𝐵𝑜𝑡 シ︎`}); 
  break; 
+
+case "take": {
+
+  if (!m.quoted) return reply('Quote a sticker!')
+  let fortunx = await client.getName(sender);
+  
+  if (!/webp/.test(mime)) throw `Tag sticker with caption  ${prefix + command}`;
+  if (m.quoted.isAnimated === true) {
+  client.downloadAndSavemediaxMessage(quoted, "gifee");
+  client.sendMessage(m.chat, {sticker:fs.readFileSync("gifee.webp")},{quoted:m});
+  } else if (/image/.test(mime)) {
+  let mediax = await quoted.download();
+  let encmediax = await client.sendImageAsSticker(m.chat, mediax, m, { packname: fortunx, author: fortunx });
+  await fs.unlinkSync(encmediax);
+
+
+
+} else if (/video/.test(mime)) {
+  if ((quoted.msg || quoted).seconds > 11) return m.reply('Not long than 10 seconds!');
+  let mediax = await quoted.download();
+  let encmediax = await client.sendVideoAsSticker(m.chat, mediax, m, { packname: fortunx, author: fortunx });
+  await fs.unlinkSync(encmediax)
+  } else {
+  reply(`Send a short video with caption ${prefix + command}`);
+  }
+  }
+break;
  
           case "song": { 
  const getRandom = (ext) => { 

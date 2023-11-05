@@ -11,7 +11,13 @@ You will need an openai API key for AI features to work.
 
 Linking/Pairing:
 
-- Head  [Here](https://github.com/Fortunatusmokaya/DREADED-PAIRING) and use that repo to pair the bot without scanning qr.
+
+## ` Pair On reptil`
+<h2 align="left">  <a href="https://replit.com/@botdreaded/Pairing-Dreaded"><img src="https://repl.it/badge/github/quiec/whatsasena" />
+</a>
+</h2>
+
+Alternatively, pair locally using the repo [Here](https://github.com/Fortunatusmokaya/DREADED-PAIRING)
 
     
 <h2 align="center">   
